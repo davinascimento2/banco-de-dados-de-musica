@@ -1,33 +1,22 @@
-Banco de Dados de Música
-
-Introdução
+🎵 BANCO DE DADOS DE MÚSICA
+📝 INTRODUÇÃO
 Este projeto tem como objetivo criar um banco de dados simples para armazenar informações sobre músicas, incluindo título, artista, álbum e ano de lançamento.
 
-Funcionalidades
+⚙️ FUNCIONALIDADES
 Adicionar novas músicas ao banco de dados.
 Listar todas as músicas cadastradas.
 Buscar músicas por título ou artista.
 Remover músicas do banco de dados.
-Tecnologias utilizadas
+💻 TECNOLOGIAS UTILIZADAS
 Linguagem de programação: Python 3.x
 Banco de dados: SQLite
-Como utilizar o projeto
-Clonar o repositório:
-
+🚀 COMO UTILIZAR O PROJETO
 bash
 Copiar código
 git clone https://github.com/seuusuario/banco-dados-musica.git
-Navegar até o diretório do projeto:
-
-bash
-Copiar código
 cd banco-dados-musica
-Executar o script:
-
-bash
-Copiar código
 python banco_de_dados.py
-Código do projeto
+💡 CÓDIGO DO PROJETO
 python
 Copiar código
 import sqlite3
@@ -77,5 +66,3 @@ if __name__ == "__main__":
     criar_tabela(conn)
     # Adicionar interações com o usuário aqui para usar as funções
     conn.close()
-Conclusão
-Esse projeto oferece uma forma simples de gerenciar um banco de dados de músicas, permitindo que o usuário armazene e acesse informações de forma eficaz.
