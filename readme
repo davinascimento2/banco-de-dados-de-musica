@@ -1,47 +1,35 @@
-# Banco de Dados de Música
+Banco de Dados de Música
 
-![img](https://via.placeholder.com/600x200.png?text=Banco+de+Dados+de+M%C3%BAsica)
+Introdução
+Este projeto tem como objetivo criar um banco de dados simples para armazenar informações sobre músicas, incluindo título, artista, álbum e ano de lançamento.
 
-## Introdução
-Este projeto tem como objetivo criar um banco de dados simples para armazenar informações sobre músicas, incluindo título, artista, álbum e ano de lançamento. O projeto pode ser expandido para incluir funcionalidades como busca, edição e remoção de registros.
+Funcionalidades
+Adicionar novas músicas ao banco de dados.
+Listar todas as músicas cadastradas.
+Buscar músicas por título ou artista.
+Remover músicas do banco de dados.
+Tecnologias utilizadas
+Linguagem de programação: Python 3.x
+Banco de dados: SQLite
+Como utilizar o projeto
+Clonar o repositório:
 
-## Funcionalidades
-- Adicionar novas músicas ao banco de dados.
-- Listar todas as músicas cadastradas.
-- Buscar músicas por título ou artista.
-- Remover músicas do banco de dados.
-
-## Materiais utilizados
-- Linguagem de programação: Python
-- Banco de dados: SQLite
-
-## Tecnologias utilizadas
-- Python 3.x
-- SQLite3 (biblioteca padrão do Python)
-
-## Fluxo do projeto
-
-1. Criar um banco de dados SQLite para armazenar as informações das músicas.
-2. Implementar funções para adicionar, listar, buscar e remover músicas.
-3. Criar um menu interativo para o usuário escolher as opções.
-
-## Como utilizar o projeto
-
-1. Clonar o repositório:
-   ```bash
-   git clone https://github.com/seuusuario/banco-dados-musica.git
+bash
+Copiar código
+git clone https://github.com/seuusuario/banco-dados-musica.git
 Navegar até o diretório do projeto:
 
- ```bash
+bash
+Copiar código
 cd banco-dados-musica
-
-
 Executar o script:
 
- ```bash
-
+bash
+Copiar código
 python banco_de_dados.py
-
+Código do projeto
+python
+Copiar código
 import sqlite3
 
 def conectar():
@@ -63,8 +51,10 @@ def criar_tabela(conn):
 
 def adicionar_musica(conn, titulo, artista, album, ano):
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO musicas (titulo, artista, album, ano) VALUES (?, ?, ?, ?)', 
-                   (titulo, artista, album, ano))
+    cursor.execute('''
+    INSERT INTO musicas (titulo, artista, album, ano)
+    VALUES (?, ?, ?, ?)
+    ''', (titulo, artista, album, ano))
     conn.commit()
 
 def listar_musicas(conn):
@@ -74,47 +64,18 @@ def listar_musicas(conn):
 
 def buscar_musica(conn, titulo):
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM musicas WHERE titulo LIKE ?', ('%' + titulo + '%',))
+    cursor.execute('SELECT * FROM musicas WHERE titulo = ?', (titulo,))
     return cursor.fetchall()
 
-def remover_musica(conn, musica_id):
+def remover_musica(conn, id):
     cursor = conn.cursor()
-    cursor.execute('DELETE FROM musicas WHERE id = ?', (musica_id,))
+    cursor.execute('DELETE FROM musicas WHERE id = ?', (id,))
     conn.commit()
 
 if __name__ == "__main__":
     conn = conectar()
     criar_tabela(conn)
-    while True:
-        print("1. Adicionar música")
-        print("2. Listar músicas")
-        print("3. Buscar música")
-        print("4. Remover música")
-        print("5. Sair")
-        escolha = input("Escolha uma opção: ")
-
-        if escolha == '1':
-            titulo = input("Título: ")
-            artista = input("Artista: ")
-            album = input("Álbum: ")
-            ano = input("Ano: ")
-            adicionar_musica(conn, titulo, artista, album, ano)
-        elif escolha == '2':
-            musicas = listar_musicas(conn)
-            for musica in musicas:
-                print(musica)
-        elif escolha == '3':
-            titulo = input("Título da música: ")
-            musicas = buscar_musica(conn, titulo)
-            for musica in musicas:
-                print(musica)
-        elif escolha == '4':
-            musica_id = int(input("ID da música a remover: "))
-            remover_musica(conn, musica_id)
-        elif escolha == '5':
-            break
-
+    # Adicionar interações com o usuário aqui para usar as funções
     conn.close()
-
 Conclusão
-Esse projeto fornece uma base simples para gerenciar um banco de dados de músicas. O usuário pode expandir a funcionalidade para incluir recursos adicionais, como a possibilidade de editar informações das músicas.
+Esse projeto oferece uma forma simples de gerenciar um banco de dados de músicas, permitindo que o usuário armazene e acesse informações de forma eficaz.
